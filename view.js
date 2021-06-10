@@ -16,7 +16,7 @@ function bootstrap() {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  	L.polygon([
+  	primerZona = L.polygon([
     L.latLng(-34.529871, -58.688620),
     L.latLng(-34.518281, -58.671380),
     L.latLng(-34.500427, -58.692358),
@@ -27,7 +27,9 @@ function bootstrap() {
     L.latLng(-34.53176606104027, -58.702733638905606),
     L.latLng(-34.53182105502062, -58.70031862564283),
     L.latLng(-34.525860154920245, -58.69369666852618),
-]).addTo(map);
+])
+primerZona.options.color = '#FF5733';
+primerZona.addTo(map);
 	
 	L.polygon([
     L.latLng(-34.518212875004565, -58.671293506665755),
