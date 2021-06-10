@@ -113,14 +113,14 @@ function b() {
 borrarPuntosDelMapa()
   for(let x = 0; x < comerciosPrimerZona.length; x++){ 
     comercioPrimeraZonaDibujar.addLayers([
-    L.marker([comerciosPrimerZona[x].lat,comerciosPrimerZona[x].long]).bindPopup("id:" + comerciosPrimerZona[x].id)
+    L.marker([comerciosPrimerZona[x].lat,comerciosPrimerZona[x].long]).bindPopup(getDescripcion(comerciosPrimerZona[x]))
     ])
   }
   comercioPrimeraZonaDibujar.addTo(map);
 
   for(let x = 0; x < comerciosSegundaZona.length; x++){ 
     comercioSegundaZonaDibujar.addLayers([
-    L.marker([comerciosSegundaZona[x].lat,comerciosSegundaZona[x].long]).bindPopup("id:" + comerciosSegundaZona[x].id)
+    L.marker([comerciosSegundaZona[x].lat,comerciosSegundaZona[x].long]).bindPopup(getDescripcion(comerciosSegundaZona[x]))
     ])
   }
   comercioSegundaZonaDibujar.addTo(map);
