@@ -1,4 +1,3 @@
-
 var map;
 
   var comercioPrimeraZonaDibujar = L.markerClusterGroup()
@@ -74,7 +73,11 @@ estacionamientoPrimerZona.addTo(map);
 
 }
 
-
+let estacionamientoIcon = L.icon({
+  iconUrl:'leaflet/images/estacionamiento.png',
+  iconSize:[45,45],
+  iconAnchor: [30,60]
+})
 
 const formulario=document.getElementById("botonEstacionamientos");
 
@@ -88,14 +91,14 @@ function a() {
 borrarPuntosDelMapa()
 	for(let x = 0; x < espaciosPrimerZona.length; x++){ 
   		estacionamientoPrimerZona.addLayers([
-			L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long]).bindPopup("id:" + espaciosPrimerZona[x].id)
+			L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long],{ icon: estacionamientoIcon}).bindPopup("id:" + espaciosPrimerZona[x].id)
  		 ])
 	}
 	estacionamientoPrimerZona.addTo(map);
 
 	for(let x = 0; x < espaciosSegundaZona.length; x++){ 
   		estacionamientoSegundaZona.addLayers([
-			L.marker([espaciosSegundaZona[x].lat,espaciosSegundaZona[x].long]).bindPopup("id:" + espaciosSegundaZona[x].id)
+			L.marker([espaciosSegundaZona[x].lat,espaciosSegundaZona[x].long],{ icon: estacionamientoIcon}).bindPopup("id:" + espaciosSegundaZona[x].id)
   		])
 	}
 	estacionamientoSegundaZona.addTo(map);
