@@ -1,5 +1,12 @@
 
 var map;
+
+  var comercioPrimeraZonaDibujar = L.markerClusterGroup()
+  var comercioSegundaZonaDibujar = L.markerClusterGroup()
+
+  var estacionamientoPrimerZona = L.markerClusterGroup()
+  var estacionamientoSegundaZona = L.markerClusterGroup()
+
 function bootstrap() {
 
   var ungsLocation = [-34.5221554, -58.7000067];
@@ -76,7 +83,7 @@ formulario.addEventListener('submit', (e) => {
 });
 
 function a() {
-  var estacionamientoPrimerZona = L.markerClusterGroup()
+borrarPuntosDelMapa()
 	for(let x = 0; x < espaciosPrimerZona.length; x++){ 
   		estacionamientoPrimerZona.addLayers([
 			L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long])
@@ -84,7 +91,6 @@ function a() {
 	}
 	estacionamientoPrimerZona.addTo(map);
 
-	var estacionamientoSegundaZona = L.markerClusterGroup()
 	for(let x = 0; x < espaciosSegundaZona.length; x++){ 
   		estacionamientoSegundaZona.addLayers([
 			L.marker([espaciosSegundaZona[x].lat,espaciosSegundaZona[x].long])
@@ -102,7 +108,7 @@ formulario2.addEventListener('submit', (e) => {
 });
 
 function b() {
-  var comercioPrimeraZonaDibujar = L.markerClusterGroup()
+borrarPuntosDelMapa()
   for(let x = 0; x < comerciosPrimerZona.length; x++){ 
     comercioPrimeraZonaDibujar.addLayers([
     L.marker([comerciosPrimerZona[x].lat,comerciosPrimerZona[x].long])
@@ -110,7 +116,6 @@ function b() {
   }
   comercioPrimeraZonaDibujar.addTo(map);
 
-  var comercioSegundaZonaDibujar = L.markerClusterGroup()
   for(let x = 0; x < comerciosSegundaZona.length; x++){ 
     comercioSegundaZonaDibujar.addLayers([
     L.marker([comerciosSegundaZona[x].lat,comerciosSegundaZona[x].long])
@@ -118,3 +123,11 @@ function b() {
   }
   comercioSegundaZonaDibujar.addTo(map);
 }
+
+function borrarPuntosDelMapa(){
+	comercioPrimeraZonaDibujar.clearLayers();
+	comercioSegundaZonaDibujar.clearLayers();
+	estacionamientoPrimerZona.clearLayers();
+	estacionamientoSegundaZona.clearLayers();
+}
+
