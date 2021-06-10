@@ -88,14 +88,14 @@ function a() {
 borrarPuntosDelMapa()
 	for(let x = 0; x < espaciosPrimerZona.length; x++){ 
   		estacionamientoPrimerZona.addLayers([
-			L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long])
+			L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long]).bindPopup("id:" + espaciosPrimerZona[x].id)
  		 ])
 	}
 	estacionamientoPrimerZona.addTo(map);
 
 	for(let x = 0; x < espaciosSegundaZona.length; x++){ 
   		estacionamientoSegundaZona.addLayers([
-			L.marker([espaciosSegundaZona[x].lat,espaciosSegundaZona[x].long])
+			L.marker([espaciosSegundaZona[x].lat,espaciosSegundaZona[x].long]).bindPopup("id:" + espaciosSegundaZona[x].id)
   		])
 	}
 	estacionamientoSegundaZona.addTo(map);
@@ -113,14 +113,14 @@ function b() {
 borrarPuntosDelMapa()
   for(let x = 0; x < comerciosPrimerZona.length; x++){ 
     comercioPrimeraZonaDibujar.addLayers([
-    L.marker([comerciosPrimerZona[x].lat,comerciosPrimerZona[x].long])
+    L.marker([comerciosPrimerZona[x].lat,comerciosPrimerZona[x].long]).bindPopup("id:" + comerciosPrimerZona[x].id)
     ])
   }
   comercioPrimeraZonaDibujar.addTo(map);
 
   for(let x = 0; x < comerciosSegundaZona.length; x++){ 
     comercioSegundaZonaDibujar.addLayers([
-    L.marker([comerciosSegundaZona[x].lat,comerciosSegundaZona[x].long])
+    L.marker([comerciosSegundaZona[x].lat,comerciosSegundaZona[x].long]).bindPopup("id:" + comerciosSegundaZona[x].id)
     ])
   }
   comercioSegundaZonaDibujar.addTo(map);
