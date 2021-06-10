@@ -29,9 +29,9 @@ function bootstrap() {
 ]).addTo(map);
 
 
-  var ungsMarker=L.marker(ungsLocation);
-  ungsMarker.addTo(map);
-
+//  var ungsMarker=L.marker(ungsLocation);
+//  ungsMarker.addTo(map);
+/*
   var cluster = L.markerClusterGroup();
   cluster.addLayers([
     ungsMarker,
@@ -52,29 +52,35 @@ var cluster2 = L.markerClusterGroup();
 	L.marker([-34.51193139435554, -58.66471188737864])
   ])
   cluster2.addTo(map);
+*/
 
-var cluster3 = L.markerClusterGroup() //ESTACIONAMIENTOS DISPONIBLES EN LA ZONA 1
-  cluster3.addLayers([
-	L.marker([-34.52249726820982, -58.7068007280391]),
-	L.marker([-34.517791611532346, -58.70315095798039]),
-	L.marker([-34.506693115836974, -58.690425345280694]),
-	L.marker([-34.52641510846728, -58.686220103874675])
+/*
+var estacionamientoPrimerZona = L.markerClusterGroup()
+for(let x = 0; x < espaciosDisponiblesTodasZonas.length; x++){ 
+  estacionamientoPrimerZona.addLayers([
+	L.marker([espaciosDisponiblesTodasZonas[x].lat,espaciosDisponiblesTodasZonas[x].long])
   ])
-cluster3.addTo(map);
+}
+estacionamientoPrimerZona.addTo(map);
+*/
 
-var cluster4 = L.markerClusterGroup() //ESTACIONAMIENTOS DISPONIBLES EN LA ZONA 2
-  cluster4.addLayers([
-	L.marker([-34.51655318684132, -58.67029077545164]),
-	L.marker([-34.50384872228707, -58.67613019921832]),
-	L.marker([-34.51246663466511, -58.66530911207543]),
-  ])
-cluster4.addTo(map);
 
-var cluster5 = L.markerClusterGroup() //ESTACIONAMIENTO OCUPADO DE LA ZONA 1
-  cluster5.addLayers([
-	L.marker([-34.52957954866747, -58.70044157744358]),
+var estacionamientoPrimerZona = L.markerClusterGroup()
+for(let x = 0; x < espaciosPrimerZona.length; x++){ 
+  estacionamientoPrimerZona.addLayers([
+		L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long])
   ])
-cluster5.addTo(map);
+}
+estacionamientoPrimerZona.addTo(map);
+
+var estacionamientoSegundaZona = L.markerClusterGroup()
+for(let x = 0; x < espaciosSegundaZona.length; x++){ 
+  estacionamientoSegundaZona.addLayers([
+		L.marker([espaciosSegundaZona[x].lat,espaciosSegundaZona[x].long])
+  ])
+}
+estacionamientoSegundaZona.addTo(map);
 
   //map.addLayer(cluster);
+
 }
