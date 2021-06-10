@@ -1,7 +1,9 @@
+
+var map;
 function bootstrap() {
 
   var ungsLocation = [-34.5221554, -58.7000067];
-  var map = L.map('mapid').setView(ungsLocation, 15);
+  map = L.map('mapid').setView(ungsLocation, 15);
 
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -56,16 +58,10 @@ var cluster2 = L.markerClusterGroup();
 
 
 
+
+
 /*
-document.getElementById("botonEstacionamientos").addEventListener('submit', (e) => {
-    e.preventDefault();
-	function a() {
-
-
-    };
-});
-*/
-        var estacionamientoPrimerZona = L.markerClusterGroup()
+  var estacionamientoPrimerZona = L.markerClusterGroup()
 	for(let x = 0; x < espaciosPrimerZona.length; x++){ 
   		estacionamientoPrimerZona.addLayers([
 			L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long])
@@ -81,7 +77,7 @@ document.getElementById("botonEstacionamientos").addEventListener('submit', (e) 
 	}
 	estacionamientoSegundaZona.addTo(map);
 
-
+*/
 
 
 
@@ -98,4 +94,27 @@ estacionamientoPrimerZona.addTo(map);
 
   //map.addLayer(cluster);
 
+}
+
+
+
+const formulario=document.getElementById("botonEstacionamientos");
+
+
+formulario.addEventListener('submit', (e) => {
+  e.preventDefault();
+  console.log("se ejecuta el boton");
+  a(); 
+});
+
+function a() {
+
+  
+  var estacionamientoPrimerZona = L.markerClusterGroup()
+  for(let x = 0; x < espaciosDisponiblesTodasZonas.length; x++){ 
+    estacionamientoPrimerZona.addLayers([
+    L.marker([espaciosDisponiblesTodasZonas[x].lat,espaciosDisponiblesTodasZonas[x].long])
+    ])
+  }
+  estacionamientoPrimerZona.addTo(map);
 }

@@ -8,8 +8,8 @@
 
     <link rel="stylesheet" href="./leaflet/leaflet.css">
     <script src="./leaflet/leaflet.js"></script>
-    <script src="./view.js"></script>
-    <script src="./espacios.js"></script>
+    <!--<script src="./view.js"></script>-->
+
 
     <link rel="stylesheet" href="./leaflet/MarkerCluster.css">
     <link rel="stylesheet" href="./leaflet/MarkerCluster.Default.css">
@@ -21,13 +21,16 @@
 
 
     <div class='menu' id='menu'>
-        <button type='submit' name="botonEstacionamientos" id="botonEstacionamientos">Ver puntos de estacionamiento</button>
+      <form class="botonEstacionamientos" id="botonEstacionamientos" name="botonEstacionamientos" >
+        <button type='submit'>Ver puntos de estacionamiento</button>
         <br>
-
+      </form>
         <button type='submit' name='botonPuntosComercio' id="botonPuntosComercio">Ver puntos de comercio</button>
         <br>
 
     </div>
+    <script src="espacios.js"></script>
+    <script src="view.js"></script>
   </body>
 
 </html>
