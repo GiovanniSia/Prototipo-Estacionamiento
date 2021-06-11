@@ -74,7 +74,7 @@ var bootstrap = function () {
         });
 
     function obtenerTipoInfraccion(tipo_id) {
-        return requestTiposInfraccionID(tipo_id)
+        requestTiposInfraccionID(tipo_id)
             .then(extractTiposInfraccionID)
 	    .then(mostrarTiposInfraccion)
             .done(function () {
@@ -90,7 +90,7 @@ var bootstrap = function () {
     function agregartxt1(response) {
         document.getElementById("infracciones").innerHTML = "";
         for (let x = 0; x < response.length; x++) {
-	    obtenerTipoInfraccion(response[x].tipoInfraccion)
+	    obtenerTipoInfraccion(parseInt(response[x].tipoInfraccion))
             direccionRegistrada = response[x].direccionRegistrada
             existeAcarreo = response[x].existeAcarreo
             fechaHoraActualizacion = response[x].fechaHoraActualizacion
@@ -99,6 +99,7 @@ var bootstrap = function () {
             montoAPagar = response[x].montoAPagar;
             patente = response[x].patente;
             
+console.log(tipoInfra);
             var text = document.createTextNode("id: " + id + ", " + direccionRegistrada + ", fecha de actualizacion:" + fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + ", tipo de infraccion: "+tipoInfra);
 		
             document.getElementById("infracciones").appendChild(text);
