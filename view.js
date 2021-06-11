@@ -71,7 +71,7 @@ estacionamientoPrimerZona.addTo(map);
 */
 
   //map.addLayer(cluster);
-
+botonesComercios()
 }
 
 
@@ -124,6 +124,11 @@ borrarPuntosDelMapa()
     ])
   }
   comercioSegundaZonaDibujar.addTo(map);
+
+//
+//var button = '<input type="submit" value="Numero parrafos" id="num_parrafos" name="Numero Parrafos"/>';
+//$('#botonPuntosComercio').append(button);
+//$('form').append(button);
 }
 
 function borrarPuntosDelMapa(){
@@ -133,3 +138,36 @@ function borrarPuntosDelMapa(){
 	estacionamientoSegundaZona.clearLayers();
 }
 
+function botonesComercios(){
+	
+	for(let x = 0; x < comerciosTodasLasZonas.length; x++){ 
+		nombre = comerciosTodasLasZonas[x].nombreComercio + " " + comerciosTodasLasZonas[x].domicilio
+		const idBoton = comerciosTodasLasZonas[x].id
+
+		var button = '<input type="submit" value='+ comerciosTodasLasZonas[x].id+' id='+ comerciosTodasLasZonas[x].id +' name='+ nombre +'/>';
+		
+		$('#botonPuntosComerciosIndividuales').append(button);
+		
+		$("#"+idBoton).click(function() {
+    		    console.log("se ejecuta el boton propio"+idBoton);
+  			botonesComerciosPropios(idBoton);
+    		});
+
+/*
+		const elBoton=document.getElementById(idBoton);
+		elBoton.addEventListener('submit', (e) => {
+ 			 e.preventDefault();
+  			console.log("se ejecuta el boton propio");
+  			botonesComerciosPropios(idBoton);
+		});
+*/
+	}
+}
+
+function botonesComerciosPropios(idBoton){
+	borrarPuntosDelMapa()
+	comercioPrimeraZonaDibujar.addLayers([
+    		L.marker([comerciosTodasLasZonas[idBoton].lat,comerciosTodasLasZonas[idBoton].long]).bindPopup(getDescripcion(comerciosTodasLasZonas[idBoton]))
+    	])
+ 	comercioPrimeraZonaDibujar.addTo(map);
+}
