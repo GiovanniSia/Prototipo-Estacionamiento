@@ -1,55 +1,78 @@
 var bootstrap = function () {
     //Para el ejemplo
     var url = Config.url;                //https://infraccionesweb.herokuapp.com/api/
-    var patente = "ABC123"  //Por el momento asi, a futuro cambiarlo por el valor del input
     var urlInfracciones = '/infracciones/';
+    var urlTiposInfraccion = 'tiposInfraccion/';
+    var urlDepositos = 'depositos/';
+    var urlAcarreo = 'acarreos/';
 
-    var infraccion_id = "42" //Momentaneo
-
+    //'/api/ABC123/infracciones/'
+    var requestInfracciones = function (patente) {
+        return $.ajax(url + patente + urlInfracciones)
+    }
+    //'/api/ABC123/infracciones/42'
+    var requestInfraccionID = function (patente, infraccion_id) {
+        return $.ajax(url + patente + urlInfracciones + infraccion_id)
+    }
+    //'/api/tiposInfraccion/'
+    var requestTiposInfraccion = function(){
+        return $.ajax(url + urlTiposInfraccion)
+    }
+    //'/api/tiposInfraccion/1'
+    var requestTiposInfraccionID = function (tipo_id){
+        return $.ajax(url + urlTiposInfraccion + tipo_id)
+    }
+    //'/api/depositos'
+    var requestDepositos = function(){
+        return $.ajax(url + urlDepositos)
+    }
+    //'/api/ABC123/acarreos/42'
+    var requestAcarreo = function(patente, infraccion_id){
+        return $.ajax(url + patente + urlAcarreo + infraccion_id)
+    }
 
     var responseExtract = function (attr, response) {
         return response[attr];
     }
 
-    //Extraccion de las infracciones por patente
-
-    var requestInfracciones = function () {
-        return $.ajax(url + patente + urlInfracciones);//https://infraccionesweb.herokuapp.com/api/ABC123/infracciones/
-    }
+    //'/api/ABC123/infracciones/'
     var extractInfracciones = function (response) {
         return responseExtract("infracciones", response);
     }
-    var mostrarInfracciones = function (infracciones) {
-        console.log(infracciones);
-    }
-
-    requestInfracciones()
-        .then(extractInfracciones)
-        .then(mostrarInfracciones)
-        .done(function () {
-            console.log("Fin de extraccion de infracciones.");
-        });
-    
-//----------------------------------------------------------------------------------------
-    // Extraccion de una infraccion por su infraccion_id
-    var requestInfraccionID = function (infraccion_id) {
-        return $.ajax(url + patente + urlInfracciones + infraccion_id);
-    }
+    //'/api/ABC123/infracciones/42'
     var extractInfraccionID = function (response) {
         return responseExtract("infraccion", response);
     }
-    var mostrarInfraccionID = function (infraccion_id) {
-        console.log(infraccion_id)
+    //'/api/tiposInfraccion/'
+    var extractTiposInfraccion = function(response){
+        return responseExtract("tipos", response);
+    }
+    //'/api/tiposInfraccion/1'
+    var extractTiposInfraccionID = function (response){
+        return responseExtract("tipo", response);
+    }
+    //'/api/depositos'
+    var extractDepositos = function(response){
+        return responseExtract("depositos", response);
+    }
+    //'/api/ABC123/acarreos/42'
+    var extractAcarreo = function(response){
+        return responseExtract("acarreo", response);
     }
 
-    requestInfraccionID(infraccion_id)
-        .then(extractInfraccionID)
-        .then(mostrarInfraccionID)
-        .done(function () {
-            console.log("Fin de extraccion de infraccionID: "+ infraccion_id);
-        });
-//----------------------------------------------------------------------------------------
 
+
+    
+    var mostrarInfracciones = function (response){
+        console.log(response)
+    }
+
+    requestInfracciones(numPatente)
+        .then(extractInfracciones)
+        .then(mostrarInfracciones)
+        .done(function () {
+            console.log("Fin mostrar infracciones.");
+        });
 };
 
-$(bootstrap);
+//$(bootstrap);
