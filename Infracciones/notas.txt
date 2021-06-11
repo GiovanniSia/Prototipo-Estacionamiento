@@ -1,0 +1,42 @@
+DATOS DE UNA INFRACCION:
+id:                 	42
+patente:	            "ABC123"
+fechaHoraRegistro:	    "Thu, 15 Apr 2021 14:00:01 GMT"
+fechaHoraActualizacion:	"Fri, 16 Apr 2021 10:00:01 GMT"
+direccionRegistrada:	"Av. Acá Cerquita 345"
+tipoInfraccion:         0
+montoAPagar:	        "$1500"
+existeAcarreo:          true
+
+TIPOS DE INFRACCION:
+id:	0
+descripcion:	"Estacionamiento."	
+id:	1
+descripcion:	"Velocidad."	
+id:	2
+descripcion:	"Semáforo."	
+id:	3
+descripcion:	"Cruce Ferrocarril."	
+id:	4
+descripcion:	"Documentación Obligatoria."	
+id:	5
+descripcion:	"Otros."
+
+DEPOSITOS
+id	1
+nombre	"Nos llevamos su auto S.A."
+direccion	"Av. AlláLejos"
+telefono	"555-0001"
+horarios	"09.00hs a 18.00hs"
+ubicacion	
+lat	-34.5460985
+lon	-58.7104065
+
+id	2
+nombre	"No tenemos su auto! S.A."
+direccion	"Av. NoTenemosDirección 100"
+telefono	"555-0002"
+horarios	"09.00hs a 09.15hs"
+ubicacion	
+lat	-34.541765
+lon	-58.7160749
