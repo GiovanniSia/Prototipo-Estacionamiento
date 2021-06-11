@@ -91,11 +91,11 @@ var bootstrap = function () {
 			tipoInfraccion = response[x].tipoInfraccion
 
 		//requestTiposInfraccionID()
-		var text = document.createTextNode("id: "+ id + ", " + direccionRegistrada + ", fecha de actualizacion:"+ fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + " ");
+			var text = document.createTextNode("id: "+ id + ", " + direccionRegistrada + ", fecha de actualizacion:"+ fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + " ");
 
-		document.getElementById("infracciones").appendChild(text); 
-		var newt = document.createElement("br");                                  
-		document.getElementById("infracciones").appendChild(newt);
+			document.getElementById("infracciones").appendChild(text); 
+			var newt = document.createElement("br");                                  
+			document.getElementById("infracciones").appendChild(newt);
 
 	} 
 }
