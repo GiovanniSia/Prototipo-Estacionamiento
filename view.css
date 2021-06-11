@@ -13,14 +13,13 @@
 }
 
 .menu {
-  float:right; 
-  margin-left:1180px;
+  position: absolute;
+  right: 0%;
+  margin: 0% 5%;
 }
-
 .menu button{
-	margin: 20px 50px;
-	height: 45px;
-	line-height: 45px;
+  margin:10px;
+  line-height: 45px;
   
   background: #000;
 	color: #fff;
@@ -33,4 +32,15 @@
 
 .menu button:hover{
 	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+.info-comercios{
+  position: absolute;
+  right: 0px;
+  margin:12% 20px;
+  opacity: 0;
+}
+
+.info-comercios-mostrar{
+  opacity: 1;
 }
