@@ -65,6 +65,7 @@ var bootstrap = function () {
     
     var mostrarInfracciones = function (response){
         console.log(response)
+	agregartxt1(response)
     }
 
     requestInfracciones(numPatente)
@@ -75,4 +76,27 @@ var bootstrap = function () {
         });
 };
 
+
+	function agregartxt1(response){
+		document.getElementById("infracciones").innerHTML = "";
+
+		for(let x = 0; x < response.length; x++){
+			direccionRegistrada = response[x].direccionRegistrada
+			existeAcarreo = response[x].existeAcarreo
+			fechaHoraActualizacion = response[x].fechaHoraActualizacion
+			fechaHoraRegistro = response[x].fechaHoraRegistro
+			id = response[x].id
+			montoAPagar = response[x].montoAPagar
+			patente = response[x].patente
+			tipoInfraccion = response[x].tipoInfraccion
+
+		//requestTiposInfraccionID()
+		var text = document.createTextNode("id: "+ id + ", " + direccionRegistrada + ", fecha de actualizacion:"+ fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + " ");
+
+		document.getElementById("infracciones").appendChild(text); 
+		var newt = document.createElement("br");                                  
+		document.getElementById("infracciones").appendChild(newt);
+
+	} 
+}
 //$(bootstrap);
