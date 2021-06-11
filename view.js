@@ -76,44 +76,50 @@ botonesComercios()
 
 
 
-const formulario=document.getElementById("botonEstacionamientos");
+let iconoEstacionamiento = L.icon({
+	iconUrl:'leaflet/images/estacionamiento.png',
+	iconSize:[45,45],
+	iconAnchor: [30,60]
+})
 
-formulario.addEventListener('submit', (e) => {
+
+
+
+document.getElementById("botonEstacionamientos").addEventListener('submit', (e) => {
   e.preventDefault();
   console.log("se ejecuta el boton");
-  a(); 
+  dibujarPuntosEstacionamientos(); 
 });
 
-function a() {
+function dibujarPuntosEstacionamientos() {
 borrarPuntosDelMapa()
 	for(let x = 0; x < espaciosPrimerZona.length; x++){ 
   		estacionamientoPrimerZona.addLayers([
-			L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long]).bindPopup("id:" + espaciosPrimerZona[x].id)
+			L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long], {icon: iconoEstacionamiento}).bindPopup("id:" + espaciosPrimerZona[x].id)
  		 ])
 	}
 	estacionamientoPrimerZona.addTo(map);
 
 	for(let x = 0; x < espaciosSegundaZona.length; x++){ 
   		estacionamientoSegundaZona.addLayers([
-			L.marker([espaciosSegundaZona[x].lat,espaciosSegundaZona[x].long]).bindPopup("id:" + espaciosSegundaZona[x].id)
+			L.marker([espaciosSegundaZona[x].lat,espaciosSegundaZona[x].long], {icon: iconoEstacionamiento}).bindPopup("id:" + espaciosSegundaZona[x].id)
   		])
 	}
 	estacionamientoSegundaZona.addTo(map);
 }
 
 
-const formulario2=document.getElementById("botonPuntosComercio");
-formulario2.addEventListener('submit', (e) => {
+document.getElementById("botonPuntosComercio").addEventListener('submit', (e) => {
   e.preventDefault();
   console.log("se ejecuta el boton");
-  b(); 
+  dibujarPuntosComercio(); 
 });
 
-function b() {
+function dibujarPuntosComercio() {
 borrarPuntosDelMapa()
   for(let x = 0; x < comerciosPrimerZona.length; x++){ 
     comercioPrimeraZonaDibujar.addLayers([
-    L.marker([comerciosPrimerZona[x].lat,comerciosPrimerZona[x].long]).bindPopup(getDescripcion(comerciosPrimerZona[x]))
+    L.marker([comerciosPrimerZona[x].lat,comerciosPrimerZona[x].long], ).bindPopup(getDescripcion(comerciosPrimerZona[x]))
     ])
   }
   comercioPrimeraZonaDibujar.addTo(map);
