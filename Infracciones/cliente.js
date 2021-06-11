@@ -1,3 +1,4 @@
+var tipoInfra
 var bootstrap = function () {
     //Para el ejemplo
     var url = Config.url;                //https://infraccionesweb.herokuapp.com/api/
@@ -5,7 +6,7 @@ var bootstrap = function () {
     var urlTiposInfraccion = 'tiposInfraccion/';
     var urlDepositos = 'depositos/';
     var urlAcarreo = 'acarreos/';
-
+	
     //'/api/ABC123/infracciones/'
     var requestInfracciones = function (patente) {
         return $.ajax(url + patente + urlInfracciones)
@@ -73,32 +74,33 @@ var bootstrap = function () {
         });
 
     function obtenerTipoInfraccion(tipo_id) {
-        requestTiposInfraccionID(tipo_id)
+        return requestTiposInfraccionID(tipo_id)
             .then(extractTiposInfraccionID)
-            .then(mostrarTiposInfraccion)
+	    .then(mostrarTiposInfraccion)
             .done(function () {
                 console.log("Fin mostrar tipoInfraccion.");
             });
     }
 
     var mostrarTiposInfraccion = function (response) {
-        console.log(response.descripcion)
+	console.log(response.descripcion);
+	tipoInfra = response.descripcion;
     }
 
     function agregartxt1(response) {
         document.getElementById("infracciones").innerHTML = "";
         for (let x = 0; x < response.length; x++) {
+	    obtenerTipoInfraccion(response[x].tipoInfraccion)
             direccionRegistrada = response[x].direccionRegistrada
             existeAcarreo = response[x].existeAcarreo
             fechaHoraActualizacion = response[x].fechaHoraActualizacion
             fechaHoraRegistro = response[x].fechaHoraRegistro
             id = response[x].id
-            montoAPagar = response[x].montoAPagar
-            patente = response[x].patente
-            tipoInfraccion = response[x].tipoInfraccion
-    
-            var text = document.createTextNode("id: " + id + ", " + direccionRegistrada + ", fecha de actualizacion:" + fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + " ");
-    
+            montoAPagar = response[x].montoAPagar;
+            patente = response[x].patente;
+            
+            var text = document.createTextNode("id: " + id + ", " + direccionRegistrada + ", fecha de actualizacion:" + fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + ", tipo de infraccion: "+tipoInfra);
+		
             document.getElementById("infracciones").appendChild(text);
             var newt = document.createElement("br");
             document.getElementById("infracciones").appendChild(newt); 
