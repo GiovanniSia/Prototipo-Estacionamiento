@@ -15,19 +15,19 @@ var bootstrap = function () {
         return $.ajax(url + patente + urlInfracciones + infraccion_id)
     }
     //'/api/tiposInfraccion/'
-    var requestTiposInfraccion = function(){
+    var requestTiposInfraccion = function () {
         return $.ajax(url + urlTiposInfraccion)
     }
     //'/api/tiposInfraccion/1'
-    var requestTiposInfraccionID = function (tipo_id){
+    var requestTiposInfraccionID = function (tipo_id) {
         return $.ajax(url + urlTiposInfraccion + tipo_id)
     }
     //'/api/depositos'
-    var requestDepositos = function(){
+    var requestDepositos = function () {
         return $.ajax(url + urlDepositos)
     }
     //'/api/ABC123/acarreos/42'
-    var requestAcarreo = function(patente, infraccion_id){
+    var requestAcarreo = function (patente, infraccion_id) {
         return $.ajax(url + patente + urlAcarreo + infraccion_id)
     }
 
@@ -44,28 +44,25 @@ var bootstrap = function () {
         return responseExtract("infraccion", response);
     }
     //'/api/tiposInfraccion/'
-    var extractTiposInfraccion = function(response){
+    var extractTiposInfraccion = function (response) {
         return responseExtract("tipos", response);
     }
     //'/api/tiposInfraccion/1'
-    var extractTiposInfraccionID = function (response){
+    var extractTiposInfraccionID = function (response) {
         return responseExtract("tipo", response);
     }
     //'/api/depositos'
-    var extractDepositos = function(response){
+    var extractDepositos = function (response) {
         return responseExtract("depositos", response);
     }
     //'/api/ABC123/acarreos/42'
-    var extractAcarreo = function(response){
+    var extractAcarreo = function (response) {
         return responseExtract("acarreo", response);
     }
 
-
-
-    
-    var mostrarInfracciones = function (response){
+    var mostrarInfracciones = function (response) {
         console.log(response)
-	agregartxt1(response)
+        agregartxt1(response)
     }
 
     requestInfracciones(numPatente)
@@ -74,29 +71,41 @@ var bootstrap = function () {
         .done(function () {
             console.log("Fin mostrar infracciones.");
         });
+
+    function obtenerTipoInfraccion(tipo_id) {
+        requestTiposInfraccionID(tipo_id)
+            .then(extractTiposInfraccionID)
+            .then(mostrarTiposInfraccion)
+            .done(function () {
+                console.log("Fin mostrar tipoInfraccion.");
+            });
+    }
+
+    var mostrarTiposInfraccion = function (response) {
+        console.log(response.descripcion)
+    }
+
+    function agregartxt1(response) {
+        document.getElementById("infracciones").innerHTML = "";
+        for (let x = 0; x < response.length; x++) {
+            direccionRegistrada = response[x].direccionRegistrada
+            existeAcarreo = response[x].existeAcarreo
+            fechaHoraActualizacion = response[x].fechaHoraActualizacion
+            fechaHoraRegistro = response[x].fechaHoraRegistro
+            id = response[x].id
+            montoAPagar = response[x].montoAPagar
+            patente = response[x].patente
+            tipoInfraccion = response[x].tipoInfraccion
+    
+            var text = document.createTextNode("id: " + id + ", " + direccionRegistrada + ", fecha de actualizacion:" + fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + " ");
+    
+            document.getElementById("infracciones").appendChild(text);
+            var newt = document.createElement("br");
+            document.getElementById("infracciones").appendChild(newt); 
+        }
+    }
 };
 
 
-	function agregartxt1(response){
-		document.getElementById("infracciones").innerHTML = "";
 
-		for(let x = 0; x < response.length; x++){
-			direccionRegistrada = response[x].direccionRegistrada
-			existeAcarreo = response[x].existeAcarreo
-			fechaHoraActualizacion = response[x].fechaHoraActualizacion
-			fechaHoraRegistro = response[x].fechaHoraRegistro
-			id = response[x].id
-			montoAPagar = response[x].montoAPagar
-			patente = response[x].patente
-			tipoInfraccion = response[x].tipoInfraccion
-
-		//requestTiposInfraccionID()
-			var text = document.createTextNode("id: "+ id + ", " + direccionRegistrada + ", fecha de actualizacion:"+ fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + " ");
-
-			document.getElementById("infracciones").appendChild(text); 
-			var newt = document.createElement("br");                                  
-			document.getElementById("infracciones").appendChild(newt);
-
-	} 
-}
 //$(bootstrap);
