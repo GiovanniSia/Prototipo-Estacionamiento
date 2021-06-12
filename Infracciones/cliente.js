@@ -63,7 +63,8 @@ var bootstrap = function () {
 
     var mostrarInfracciones = function (response) {
         console.log(response)
-        agregartxt1(response)
+	actualizarElHTMLConLasInfracciones(response)
+        //agregartxt1(response)
     }
 
     requestInfracciones(numPatente)
@@ -74,7 +75,7 @@ var bootstrap = function () {
         });
 
     function obtenerTipoInfraccion(tipo_id) {
-        requestTiposInfraccionID(tipo_id)
+	return requestTiposInfraccionID(tipo_id)
             .then(extractTiposInfraccionID)
 	    .then(mostrarTiposInfraccion)
             .done(function () {
@@ -85,6 +86,7 @@ var bootstrap = function () {
     var mostrarTiposInfraccion = function (response) {
 	console.log(response.descripcion);
 	tipoInfra = response.descripcion;
+	return response.descripcion;
     }
 
     function agregartxt1(response) {
@@ -107,6 +109,41 @@ console.log(tipoInfra);
             document.getElementById("infracciones").appendChild(newt); 
         }
     }
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+//	Tratando de hacerlo de forma secuencial
+
+	function actualizarElHTMLConLasInfracciones(response) {
+		document.getElementById("infracciones").innerHTML = "";
+        	for (let x = 0; x < response.length; x++) {
+			obtenerTipoDeInfraccion(response[x]).then(escribirEnElHTML(response[x]));
+		}
+	}
+
+	var obtenerTipoDeInfraccion = function (infraccion){
+		tipoInfraccion = obtenerTipoInfraccion(infraccion.tipoInfraccion)
+		console.log(tipoInfraccion + " " + tipoInfra + " llego hasta aca")
+		return tipoInfraccion
+	}
+
+	var escribirEnElHTML = function (infraccion){
+		direccionRegistrada = infraccion.direccionRegistrada
+            	existeAcarreo = infraccion.existeAcarreo
+           	fechaHoraActualizacion = infraccion.fechaHoraActualizacion
+            	fechaHoraRegistro = infraccion.fechaHoraRegistro
+            	id = infraccion.id
+            	montoAPagar = infraccion.montoAPagar;
+            	patente = infraccion.patente;
+            	tipoInfraccion = tipoInfra
+
+            	var text = document.createTextNode("id: " + id + ", " + direccionRegistrada + ", fecha de actualizacion:" + fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + ", tipo de infraccion: "+tipoInfraccion);
+		
+            	document.getElementById("infracciones").appendChild(text);
+            	var newt = document.createElement("br");
+            	document.getElementById("infracciones").appendChild(newt);
+	}
+	
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 };
 
 
