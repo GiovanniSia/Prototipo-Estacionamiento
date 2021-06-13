@@ -63,8 +63,9 @@ var bootstrap = function () {
 
     var mostrarInfracciones = function (response) {
         console.log(response)
-	actualizarElHTMLConLasInfracciones(response)
+	//actualizarElHTMLConLasInfracciones(response)
         //agregartxt1(response)
+	buscarYEscribirLasInfracciones(response)
     }
 
     requestInfracciones(numPatente)
@@ -144,8 +145,43 @@ console.log(tipoInfra);
 	
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-};
 
+//SEGUNDO INTENTO DE SECUENCIARLO
+
+	var escribirInfraccionesEnHtml = function (infracciones){
+	for (let x = 0; x < infracciones.length; x++) {
+		direccionRegistrada = infracciones[x].direccionRegistrada
+            	existeAcarreo = infracciones[x].existeAcarreo
+           	fechaHoraActualizacion = infracciones[x].fechaHoraActualizacion
+            	fechaHoraRegistro = infracciones[x].fechaHoraRegistro
+            	id = infracciones[x].id
+            	montoAPagar = infracciones[x].montoAPagar;
+            	patente = infracciones[x].patente;
+            	tipoInfraccion = infracciones[x].tipoInfraccionString
+
+            	var text = document.createTextNode("id: " + id + ", " + direccionRegistrada + ", fecha de actualizacion:" + fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + ", tipo de infraccion: "+ tipoInfraccion);
+
+            	document.getElementById("infracciones").appendChild(text);
+            	var newt = document.createElement("br");
+            	document.getElementById("infracciones").appendChild(newt);
+	}
+}
+
+	var buscarEInsertarLosTiposDeInfracciones = function (infracciones){
+		for (let x = 0; x < infracciones.length; x++) {
+			tipoDeInfraccion = obtenerTipoInfraccion(infracciones[x].tipoInfraccion);
+			infracciones[x].tipoInfraccionString = tipoDeInfraccion.descripcion;
+			console.log(infracciones[x])
+		}
+		return infracciones;
+	};
+
+	var buscarYEscribirLasInfracciones = function (infracciones){
+		buscarEInsertarLosTiposDeInfracciones(infracciones).then(escribirInfraccionesEnHtml(infracciones));
+		console.log("Cumplio la segunda de secuencializado")
+	}
+
+}
 
 
 //$(bootstrap);
