@@ -5,7 +5,7 @@ var bootstrap = function () {
     var urlInfracciones = '/infracciones/';
     var urlTiposInfraccion = 'tiposInfraccion/';
     var urlDepositos = 'depositos/';
-    var urlAcarreo = 'acarreos/';
+    var urlAcarreo = '/acarreos/';
 	
     //'/api/ABC123/infracciones/'
     var requestInfracciones = function (patente) {
@@ -88,7 +88,7 @@ var bootstrap = function () {
     }
 
 //SEGUNDO INTENTO DE SECUENCIARLO
-	var escribirInfraccionesEnHtml = function (infracciones){
+	var escribirInfraccionesEnHtml = async function(infracciones){
 		for (let x = 0; x < infracciones.length; x++) {
 			direccionRegistrada = infracciones[x].direccionRegistrada
         	    	existeAcarreo = infracciones[x].existeAcarreo
@@ -103,7 +103,8 @@ var bootstrap = function () {
 
           	  	document.getElementById("infracciones").appendChild(text);
           	  	var newt = document.createElement("br");
-         	   	document.getElementById("infracciones").appendChild(newt);
+			document.getElementById("infracciones").appendChild(newt);
+			await siHayAcarreo(infracciones[x])
 		}
 	}
 
@@ -121,6 +122,22 @@ var bootstrap = function () {
 		const infraccionesActualizadas = await buscarEInsertarLosTiposDeInfracciones(infracciones)
 		await escribirInfraccionesEnHtml(infraccionesActualizadas)
 		console.log("Cumplio la segunda de secuencializado")
+	}
+
+	async function siHayAcarreo(infraccion){
+		if(infraccion.existeAcarreo){
+			//aca se hacen los cambios
+			//obtengo los datos del acarreo
+			const datosAcarreo = await requestAcarreo(infraccion.patente, infraccion.id)
+			const datosAcarreoExtract = await extractAcarreo(datosAcarreo)
+			console.log(datosAcarreoExtract)
+
+			var text = document.createTextNode("Deposito del acarreo: " + datosAcarreoExtract.deposito.nombre + ", direccion:" + datosAcarreoExtract.deposito.direccion + ", horarios:" + datosAcarreoExtract.deposito.horarios + ", telefono: " + datosAcarreoExtract.deposito.telefono);
+
+          	  	document.getElementById("infracciones").appendChild(text);
+          	  	var newt = document.createElement("br");
+         	   	document.getElementById("infracciones").appendChild(newt);
+		}
 	}
 
 }
