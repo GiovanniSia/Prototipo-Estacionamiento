@@ -79,9 +79,6 @@ var bootstrap = function () {
 	return requestTiposInfraccionID(tipo_id)
             .then(extractTiposInfraccionID)
 	    .then(mostrarTiposInfraccion)
-            .done(function () {
-                console.log("Fin mostrar tipoInfraccion.");
-            });
     }
 
     var mostrarTiposInfraccion = function (response) {
@@ -167,17 +164,18 @@ console.log(tipoInfra);
 	}
 }
 
-	var buscarEInsertarLosTiposDeInfracciones = function (infracciones){
+	var buscarEInsertarLosTiposDeInfracciones = async function (infracciones){
 		for (let x = 0; x < infracciones.length; x++) {
-			tipoDeInfraccion = obtenerTipoInfraccion(infracciones[x].tipoInfraccion);
-			infracciones[x].tipoInfraccionString = tipoDeInfraccion.descripcion;
+			tipoDeInfraccion = await obtenerTipoInfraccion(infracciones[x].tipoInfraccion);
+			infracciones[x].tipoInfraccionString = await tipoDeInfraccion;
 			console.log(infracciones[x])
 		}
 		return infracciones;
 	};
 
-	var buscarYEscribirLasInfracciones = function (infracciones){
-		buscarEInsertarLosTiposDeInfracciones(infracciones).then(escribirInfraccionesEnHtml(infracciones));
+	async function buscarYEscribirLasInfracciones(infracciones){
+		const infraccionesActualizadas = await buscarEInsertarLosTiposDeInfracciones(infracciones)
+		await escribirInfraccionesEnHtml(infraccionesActualizadas)
 		console.log("Cumplio la segunda de secuencializado")
 	}
 
