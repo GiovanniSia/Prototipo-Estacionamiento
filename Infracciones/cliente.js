@@ -137,7 +137,7 @@ var bootstrap = function () {
           	  	document.getElementById("infracciones").appendChild(text);
           	  	var newt = document.createElement("br");
          	   	document.getElementById("infracciones").appendChild(newt);
-			mostrarEnElMapaDeposito(datosAcarreoExtract)
+			await mostrarEnElMapaDeposito(datosAcarreoExtract)
 		}
 	}
 }
