@@ -3,8 +3,16 @@ body {
 }
 
 #mapid {
- 
+	position: absolute;
+	top: 30%;
+	bottom: 0;
+	left: 0;
+	width: 55%;
 }
+
+
+
+
 
 #infracciones{
 	height: 300px;

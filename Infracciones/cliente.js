@@ -134,9 +134,9 @@ var bootstrap = function () {
 
 			var text = document.createTextNode("Deposito del acarreo: " + datosAcarreoExtract.deposito.nombre + ", direccion:" + datosAcarreoExtract.deposito.direccion + ", horarios:" + datosAcarreoExtract.deposito.horarios + ", telefono: " + datosAcarreoExtract.deposito.telefono);
 
-          	  	document.getElementById("infracciones").appendChild(text);
-          	  	var newt = document.createElement("br");
-         	   	document.getElementById("infracciones").appendChild(newt);
+          	document.getElementById("infracciones").appendChild(text);
+          	var newt = document.createElement("br");
+         	document.getElementById("infracciones").appendChild(newt);
 			await mostrarEnElMapaDeposito(datosAcarreoExtract)
 		}
 	}

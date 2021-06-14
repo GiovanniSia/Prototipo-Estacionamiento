@@ -192,7 +192,7 @@ function escribirInfoComercio(infoBoton){
 		Nombre de Comercio: ${infoBoton.nombreComercio}<br>
 		id: ${infoBoton.id}<br>
 		Rubro: ${infoBoton.rubro}<br>
-		Docimilio: "${infoBoton.domicilio}<br>
+		Docimilio: ${infoBoton.domicilio}<br>
 		Horario Apertura: ${infoBoton.domicilio}<br>
 		Horario Cierre: ${infoBoton.HorarioCierre}<br>
 	</label>

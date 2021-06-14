@@ -1,8 +1,8 @@
 
 async function mostrarEnElMapaDeposito(datosAcarreo){
 	//var ubicacionDeposito = [datosAcarreo.deposito.ubicacion.lat, datosAcarreo.deposito.ubicacion.lon];
-	
-	var map = await createMap('mapid', datosAcarreo);
+	console.log("DATOS ACARREO: ",datosAcarreo);
+	await createMap('mapid', datosAcarreo);
 /*
 	var ubiDeposito = L.markerClusterGroup()
 	ubiDeposito.addLayers(

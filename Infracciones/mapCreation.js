@@ -20,6 +20,9 @@ var createMap = function(nodeId, datosAcarreo) {
     layersControl.addTo(map);
     // hack:
     map.layersControl = layersControl;
+     
+    var p = L.marker(L.latLng(depositoLocation[0], depositoLocation[1]));
+    p.addTo(map);	
 
     return map;
 }
