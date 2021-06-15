@@ -134,7 +134,18 @@ var bootstrap = function () {
             document.getElementById("infracciones").appendChild(text);
             var newt = document.createElement("br");
             document.getElementById("infracciones").appendChild(newt);
-            await mostrarEnElMapaDeposito(datosAcarreoExtract)
+            
+
+		const form=document.getElementById("infracciones");
+		const button = '<input type="submit" value="ver la ubicacion" id='+ datosAcarreoExtract.id +' name="ver la ubicacion"/>';
+		$('#infracciones').append(button);
+
+		$("#"+datosAcarreoExtract.id).click(function() {
+			 mostrarEnElMapaDeposito(datosAcarreoExtract)
+    		});
+
+		newt = document.createElement("br");
+            	document.getElementById("infracciones").appendChild(newt);
         }
     }
 }
