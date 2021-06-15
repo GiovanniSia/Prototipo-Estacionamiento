@@ -1,13 +1,16 @@
 
 async function mostrarEnElMapaDeposito(datosAcarreo){
 	//var ubicacionDeposito = [datosAcarreo.deposito.ubicacion.lat, datosAcarreo.deposito.ubicacion.lon];
+	var mapid = $("#mapid");
+	mapid.css('opacity','1')
 	console.log("DATOS ACARREO: ",datosAcarreo);
 	await createMap('mapid', datosAcarreo);
-/*
-	var ubiDeposito = L.markerClusterGroup()
-	ubiDeposito.addLayers(
-    L.marker(ubicacionDeposito)).bindPopup("Deposito del acarreo: " + datosAcarreoExtract.deposito.nombre + ", direccion:" + datosAcarreoExtract.deposito.direccion + ", horarios:" + datosAcarreoExtract.deposito.horarios + ", telefono: " + datosAcarreoExtract.deposito.telefono)
-*/
+
+	const buttonBorrar = '<input type="submit" value="Cerrar mapa" id="Cerrar_mapa" name="Cerrar mapa"/>';
+	$('#mapid').append(buttonBorrar);
+
+	$("#Cerrar_mapa").click(function() {
+		mapid = $("#mapid");
+		mapid.css('opacity','0')
+    	});
 }
-
-
