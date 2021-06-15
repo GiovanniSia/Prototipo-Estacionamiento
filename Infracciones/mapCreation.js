@@ -13,7 +13,7 @@ var createMap = function(nodeId, datosAcarreo) {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-	console.log(depositoLocation + " lerolero")
+	console.log(depositoLocation[1] + " lerolero")
     var layersControl = L.control.layers({
         "Base": baseLayer
     });
@@ -21,7 +21,7 @@ var createMap = function(nodeId, datosAcarreo) {
     // hack:
     map.layersControl = layersControl;
      
-    var p = L.marker(L.latLng(depositoLocation[0], depositoLocation[1]));
+    var p = L.marker(L.latLng(depositoLocation[0], depositoLocation[1])).bindPopup("Deposito del acarreo: " + datosAcarreo.deposito.nombre + ", direccion:" + datosAcarreo.deposito.direccion + ", horarios:" + datosAcarreo.deposito.horarios + ", telefono: " + datosAcarreo.deposito.telefono);
     p.addTo(map);	
 
     return map;

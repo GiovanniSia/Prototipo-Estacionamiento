@@ -1,12 +1,10 @@
-var tipoInfra
 var bootstrap = function () {
-    //Para el ejemplo
-    var url = Config.url;                //https://infraccionesweb.herokuapp.com/api/
+    var url = Config.url;                
     var urlInfracciones = '/infracciones/';
     var urlTiposInfraccion = 'tiposInfraccion/';
     var urlDepositos = 'depositos/';
     var urlAcarreo = '/acarreos/';
-	
+
     //'/api/ABC123/infracciones/'
     var requestInfracciones = function (patente) {
         return $.ajax(url + patente + urlInfracciones)
@@ -62,10 +60,7 @@ var bootstrap = function () {
     }
 
     var mostrarInfracciones = function (response) {
-        console.log(response)
-	//actualizarElHTMLConLasInfracciones(response)
-        //agregartxt1(response)
-	escribirLasInfraccionesEnElHtml(response)
+        escribirLasInfraccionesEnElHtml(response)
     }
 
     requestInfracciones(numPatente)
@@ -76,71 +71,70 @@ var bootstrap = function () {
         });
 
     function obtenerTipoInfraccion(tipo_id) {
-	return requestTiposInfraccionID(tipo_id)
+        return requestTiposInfraccionID(tipo_id)
             .then(extractTiposInfraccionID)
-	    .then(mostrarTiposInfraccion)
+            .then(mostrarTiposInfraccion)
     }
 
     var mostrarTiposInfraccion = function (response) {
-	console.log(response.descripcion);
-	tipoInfra = response.descripcion;
-	return response.descripcion;
+
+        return response.descripcion;
     }
 
-//SEGUNDO INTENTO DE SECUENCIARLO
-	var escribirInfraccionesEnHtml = async function(infracciones){
-		for (let x = 0; x < infracciones.length; x++) {
-			direccionRegistrada = infracciones[x].direccionRegistrada
-        	    	existeAcarreo = infracciones[x].existeAcarreo
-        	   	fechaHoraActualizacion = infracciones[x].fechaHoraActualizacion
-        	    	fechaHoraRegistro = infracciones[x].fechaHoraRegistro
-        	    	id = infracciones[x].id
-        	    	montoAPagar = infracciones[x].montoAPagar;
-       		     	patente = infracciones[x].patente;
-        	    	tipoInfraccion = infracciones[x].tipoInfraccionString
+    var escribirInfraccionesEnHtml = async function (infracciones) {
+        for (let x = 0; x < infracciones.length; x++) {
+            direccionRegistrada = infracciones[x].direccionRegistrada
 
-         	   	var text = document.createTextNode("id: " + id + ", " + direccionRegistrada + ", fecha de actualizacion:" + fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + ", tipo de infraccion: "+ tipoInfraccion);
+            if (infracciones[x].existeAcarreo === true) {
+                existeAcarreo = "Si"
+            } else {
+                existeAcarreo = "No"
+            }
+            fechaHoraActualizacion = infracciones[x].fechaHoraActualizacion
+            fechaHoraRegistro = infracciones[x].fechaHoraRegistro
+            id = infracciones[x].id
+            montoAPagar = infracciones[x].montoAPagar;
+            patente = infracciones[x].patente;
+            tipoInfraccion = infracciones[x].tipoInfraccionString
 
-          	  	document.getElementById("infracciones").appendChild(text);
-          	  	var newt = document.createElement("br");
-			document.getElementById("infracciones").appendChild(newt);
-			await siHayAcarreo(infracciones[x])
-		}
-	}
+            var text = document.createTextNode("id: " + id + ", direccion registrada: " + direccionRegistrada + ", fecha de actualizacion: " + fechaHoraActualizacion + ", fecha de registro: " + fechaHoraRegistro + ", monto a pagar: " + montoAPagar + ", existe acarreo: " + existeAcarreo + ", tipo de infraccion: " + tipoInfraccion);
 
-	var buscarEInsertarLosTiposDeInfracciones = async function (infracciones){
-		for (let x = 0; x < infracciones.length; x++) {
-			tipoDeInfraccion = await obtenerTipoInfraccion(infracciones[x].tipoInfraccion);
-			infracciones[x].tipoInfraccionString = await tipoDeInfraccion;
-			console.log(infracciones[x])
-		}
-		return infracciones;
-	};
+            document.getElementById("infracciones").appendChild(text);
+            var newt = document.createElement("br");
+            document.getElementById("infracciones").appendChild(newt);
+            await siHayAcarreo(infracciones[x])
+        }
+    }
 
-	async function escribirLasInfraccionesEnElHtml(infracciones){
-		document.getElementById("infracciones").innerHTML = "";
-		const infraccionesActualizadas = await buscarEInsertarLosTiposDeInfracciones(infracciones)
-		await escribirInfraccionesEnHtml(infraccionesActualizadas)
-		console.log("Cumplio la segunda de secuencializado")
-	}
+    var buscarEInsertarLosTiposDeInfracciones = async function (infracciones) {
+        for (let x = 0; x < infracciones.length; x++) {
+            tipoDeInfraccion = await obtenerTipoInfraccion(infracciones[x].tipoInfraccion);
+            infracciones[x].tipoInfraccionString = await tipoDeInfraccion;
+        }
+        return infracciones;
+    };
 
-	async function siHayAcarreo(infraccion){
-		if(infraccion.existeAcarreo){
-			//aca se hacen los cambios
-			//obtengo los datos del acarreo
-			const datosAcarreo = await requestAcarreo(infraccion.patente, infraccion.id)
-			const datosAcarreoExtract = await extractAcarreo(datosAcarreo)
-			console.log(datosAcarreoExtract)
+    async function escribirLasInfraccionesEnElHtml(infracciones) {
+        document.getElementById("infracciones").innerHTML = "";
+        const infraccionesActualizadas = await buscarEInsertarLosTiposDeInfracciones(infracciones)
+        await escribirInfraccionesEnHtml(infraccionesActualizadas)
+        console.log("Cumplio la segunda de secuencializado")
+    }
 
-			var text = document.createTextNode("Deposito del acarreo: " + datosAcarreoExtract.deposito.nombre + ", direccion:" + datosAcarreoExtract.deposito.direccion + ", horarios:" + datosAcarreoExtract.deposito.horarios + ", telefono: " + datosAcarreoExtract.deposito.telefono);
+    async function siHayAcarreo(infraccion) {
+        if (infraccion.existeAcarreo) {
+            //aca se hacen los cambios
+            //obtengo los datos del acarreo
+            const datosAcarreo = await requestAcarreo(infraccion.patente, infraccion.id)
+            const datosAcarreoExtract = await extractAcarreo(datosAcarreo)
+            console.log(datosAcarreoExtract)
+            
+            var text = document.createTextNode("Deposito del acarreo: " + datosAcarreoExtract.deposito.nombre + ", direccion:" + datosAcarreoExtract.deposito.direccion + ", horarios:" + datosAcarreoExtract.deposito.horarios + ", telefono: " + datosAcarreoExtract.deposito.telefono);
 
-          	document.getElementById("infracciones").appendChild(text);
-          	var newt = document.createElement("br");
-         	document.getElementById("infracciones").appendChild(newt);
-			await mostrarEnElMapaDeposito(datosAcarreoExtract)
-		}
-	}
+            document.getElementById("infracciones").appendChild(text);
+            var newt = document.createElement("br");
+            document.getElementById("infracciones").appendChild(newt);
+            await mostrarEnElMapaDeposito(datosAcarreoExtract)
+        }
+    }
 }
-
-
-//$(bootstrap);
