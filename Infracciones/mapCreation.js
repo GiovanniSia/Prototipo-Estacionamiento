@@ -1,12 +1,18 @@
 /******************************************************************************
  * Función para crear un mapa.
  */
+var map;
 var createMap = function(nodeId, datosAcarreo) {
     // Ubicación del deposito
     var depositoLocation = [datosAcarreo.deposito.ubicacion.lat, datosAcarreo.deposito.ubicacion.lon];
 
     // Creación del componente mapa de Leaflet.
-    var map = L.map(nodeId).setView(depositoLocation, 13);
+    if(map==null){
+        map = L.map(nodeId).setView(depositoLocation, 13);
+    }else{
+        console.log("PENE");
+    }
+    
 
     // Agregamos los Layers de OpenStreetMap.
     var baseLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
