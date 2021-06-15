@@ -8,7 +8,11 @@ var createMap = async function(nodeId, datosAcarreo) {
     var depositoLocation = [datosAcarreo.deposito.ubicacion.lat, datosAcarreo.deposito.ubicacion.lon];
 
     // Creación del componente mapa de Leaflet.
-    if(map==null){
+	
+	if(map != null){
+		p.remove();
+		map.remove();
+	}
         map = await L.map(nodeId).setView(depositoLocation, 13);
 	// Agregamos los Layers de OpenStreetMap.
    	    var baseLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -22,12 +26,6 @@ var createMap = async function(nodeId, datosAcarreo) {
     	layersControl.addTo(map);
     	// hack:
     	map.layersControl = layersControl;
-
-	
-
-    }else{
-	    p.remove();
-    }
     
     p = L.marker(L.latLng(depositoLocation[0], depositoLocation[1])).bindPopup("Deposito del acarreo: " + datosAcarreo.deposito.nombre + ", direccion:" + datosAcarreo.deposito.direccion + ", horarios:" + datosAcarreo.deposito.horarios + ", telefono: " + datosAcarreo.deposito.telefono);
     p.addTo(map);	
