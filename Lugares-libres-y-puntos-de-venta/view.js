@@ -77,7 +77,7 @@ botonesComercios()
 
 
 let iconoEstacionamiento = L.icon({
-	iconUrl:'leaflet/images/estacionamiento.png',
+	iconUrl:'../leaflet/images/estacionamiento.png',
 	iconSize:[45,45],
 	iconAnchor: [30,60]
 })
