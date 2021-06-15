@@ -11,21 +11,21 @@ var createMap = function(nodeId, datosAcarreo) {
     if(map==null){
         map = L.map(nodeId).setView(depositoLocation, 13);
 	// Agregamos los Layers de OpenStreetMap.
-   	var baseLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+   	    var baseLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-	console.log(depositoLocation[1] + " lerolero")
+	    console.log(depositoLocation[1] + " lerolero")
     	var layersControl = L.control.layers({
         "Base": baseLayer
-    });
+         });
     	layersControl.addTo(map);
     	// hack:
     	map.layersControl = layersControl;
 
     }else{
         console.log("PENE");
-	p.remove();
+	    p.remove();
     }
     
 

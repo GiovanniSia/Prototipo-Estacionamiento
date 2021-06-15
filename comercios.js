@@ -1,16 +1,16 @@
 function comercio(lat, long, id, rubro, domicilio, horarioAbre, HorarioCierre, nombreComercio) {
-  this.lat = lat;
-  this.long = long;
-  this.id = id;
-	this.domicilio = domicilio
-	this.domicilio = horarioAbre
-	this.HorarioCierre = HorarioCierre
-	this.nombreComercio = nombreComercio
-	this.rubro = rubro
+	this.lat = lat;
+  	this.long = long;
+  	this.id = id;
+  	this.domicilio = domicilio;
+	this.HorarioAbre = horarioAbre;
+	this.HorarioCierre = HorarioCierre;
+	this.nombreComercio = nombreComercio;
+	this.rubro = rubro;
 }
 
 function getDescripcion(unComercio){
-		return "" + unComercio.nombreComercio + ", " + unComercio.rubro + " " + unComercio.domicilio + ", Horario apertura" + unComercio.domicilio + ", horario cierre " +  unComercio.HorarioCierre;
+		return "" + unComercio.nombreComercio + ", " + unComercio.rubro + " " + unComercio.domicilio + ", Horario apertura " + unComercio.HorarioAbre + ", horario cierre " +  unComercio.HorarioCierre;
 }
 
 let comerciosPrimerZona = []

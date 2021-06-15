@@ -160,7 +160,7 @@ function botonesComercios(){
 		
 		$("#"+idBoton).click(function() {
     		    console.log("se ejecuta el boton propio"+idBoton);
-  			botonesComerciosPropios(idBoton);
+  			botonesComerciosPropios(comerciosTodasLasZonas[x]);
 			escribirInfoComercio(comerciosTodasLasZonas[x]);
     		});
 
@@ -175,16 +175,15 @@ function botonesComercios(){
 	}
 }
 
-function botonesComerciosPropios(idBoton){
+function botonesComerciosPropios(comercio){
 	borrarPuntosDelMapa()
 	comercioPrimeraZonaDibujar.addLayers([
-    		L.marker([comerciosTodasLasZonas[idBoton-1].lat,comerciosTodasLasZonas[idBoton-1].long]).bindPopup(getDescripcion(comerciosTodasLasZonas[idBoton-1]))
-    	])
+    		L.marker([comercio.lat,comercio.long]).bindPopup(getDescripcion(comercio))
+    	]);
  	comercioPrimeraZonaDibujar.addTo(map);
 }
 
 function escribirInfoComercio(infoBoton){
-	let info = Object.values(infoBoton);
 	console.log(infoBoton);
 	document.getElementById('info-comercios').innerHTML=""//borramos lo que estaba antes
 	document.getElementById('info-comercios').innerHTML +=`
@@ -192,8 +191,8 @@ function escribirInfoComercio(infoBoton){
 		Nombre de Comercio: ${infoBoton.nombreComercio}<br>
 		id: ${infoBoton.id}<br>
 		Rubro: ${infoBoton.rubro}<br>
-		Docimilio: ${infoBoton.domicilio}<br>
-		Horario Apertura: ${infoBoton.domicilio}<br>
+		Domicilio: ${infoBoton.domicilio}<br>
+		Horario Apertura: ${infoBoton.HorarioAbre}<br>
 		Horario Cierre: ${infoBoton.HorarioCierre}<br>
 	</label>
 	`;

@@ -7,7 +7,7 @@
   right: 0px;
   bottom: 0px;
   left: 0px;
-  width: 75%;
+  width: 65%;
   margin: 10px 7px 10px 7px;
 
 }
@@ -37,7 +37,9 @@
 .info-comercios{
   position: absolute;
   right: 0px;
-  margin:12% 20px;
+  margin:auto 2%;
+  top:30%;
+
   opacity: 0;
 }
 
