@@ -23,15 +23,9 @@ var createMap = async function(nodeId, datosAcarreo) {
     	// hack:
     	map.layersControl = layersControl;
 
-	mapid = $("#mapid");
-	const buttonBorrar = '<input type="submit" value="Cerrar mapa" id="Cerrar_mapa" name="Cerrar mapa"/>';
-	$('#mapid').append(buttonBorrar);
-	$("#Cerrar_mapa").click(function() {
-		mapid.css('opacity','0')
-    	});
+	
 
     }else{
-        console.log("PENE");
 	    p.remove();
     }
     

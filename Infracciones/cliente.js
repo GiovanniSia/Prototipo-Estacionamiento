@@ -144,6 +144,13 @@ var bootstrap = function () {
 			 mostrarEnElMapaDeposito(datosAcarreoExtract)
     		});
 
+		mapid = $("#mapid");
+		const buttonBorrar = '<input type="submit" value="Cerrar mapa" id="Cerrar_mapa" name="Cerrar mapa"/>';
+		$('#infracciones').append(buttonBorrar);
+		$("#Cerrar_mapa").click(function() {
+			mapid.css('display','none')
+    		});
+
 		newt = document.createElement("br");
             	document.getElementById("infracciones").appendChild(newt);
         }
