@@ -1,10 +1,36 @@
+.menu{
+	background: black;
+	border: black solid;
+    padding: 80px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+	border-radius: 20px;
+}
+
 .opciones {
     text-decoration: none;
-    background: #000;
+	line-height: 45px;
+	background: #000;
 	color: #fff;
 	font-weight: bold;
 	border: none;
-	border-radius: 3px;
+	border-radius: 24px;
 	cursor: pointer;
 	transition: .1s ease all;
+	border: white solid;
+	padding: 10px;
   }
+
+.opciones:hover{
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+
+}
+
+.menu h1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
