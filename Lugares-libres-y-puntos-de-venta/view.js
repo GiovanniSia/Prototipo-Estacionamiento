@@ -41,7 +41,6 @@ primerZona.addTo(map);
 ]).addTo(map);
 
 	botonesComercios()
-	mostrarDondeDejoElCoche()
 }
 
 
@@ -161,3 +160,9 @@ function mostrarDondeDejoElCoche(){
 	estacionamientoPrimerZona.addTo(map);
 	
 }
+
+document.getElementById("botonVerDondeDejeElCoche").addEventListener('submit', (e) => {
+  	e.preventDefault();
+  	console.log("se ejecuta el boton");
+  	mostrarDondeDejoElCoche(); 
+});
