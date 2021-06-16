@@ -4,7 +4,7 @@ body {
 
 #mapid {
 	position: absolute;
-	top: 30%;
+	top: 50%;
 	bottom: 0;
 	left: 0;
 	width: 55%;
@@ -23,10 +23,73 @@ body {
 	height: 50px;
   	width: 100%;
 	position: relative;
+	padding: 20px;
 }
 
-#boton-menu {
-    text-decoration: none;
-	color: black;
-  }
+
  
+.formulario-infraccion button{
+	margin:10px;
+	line-height: 45px;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+  }
+  
+.formulario-infraccion button:hover { 
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+.formulario-infraccion a{
+    text-decoration: none;
+	margin:10px;
+	line-height: 45px;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+	padding: 13px;
+}
+.formulario-infraccion a:hover{
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+.botones-mapa{
+	margin:10px;
+	line-height: 45px;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+}
+.botones-mapa:hover { 
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+
+.formulario-infraccion input{
+    border:0;
+    background: none;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    width: 210px;
+    border-radius: 24px;
+    transition: 0.25s;
+
+}
+.formulario-infraccion input:focus{
+    width: 280px;
+    border-color: #2ecc71;
+    outline:none;/*al parecer es un subrayado feo que le da el navegador*/
+}

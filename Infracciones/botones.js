@@ -7,7 +7,7 @@ boton.addEventListener("click", function (evento) {
 
 function mostrarBotonAbrirMapa(datosAcarreoExtract) {
     const form = document.getElementById("infracciones");
-    const button = '<div id="botones_acarreo"><input type="submit" value="ver la ubicacion" id="Abrir_mapa" name="ver la ubicacion"/></div>';
+    const button = '<div id="botones_acarreo" ><input type="submit"  class="botones-mapa" value="ver la ubicacion" id="Abrir_mapa" name="ver la ubicacion"/></div>';
     $('#infracciones').append(button);
 
     $("#Abrir_mapa").click(function () {
@@ -17,7 +17,7 @@ function mostrarBotonAbrirMapa(datosAcarreoExtract) {
 }
 
 function mostrarBotonCerrarMapa() {
-    const buttonBorrar = '<input type="submit" value="Cerrar mapa" id="Cerrar_mapa" name="Cerrar mapa"/>';
+    const buttonBorrar = '<input type="submit"  class="botones-mapa" value="Cerrar mapa" id="Cerrar_mapa" name="Cerrar mapa"/>';
     $('#botones_acarreo').append(buttonBorrar);
     $("#Cerrar_mapa").click(function () {
         mapid.css('display', 'none')
