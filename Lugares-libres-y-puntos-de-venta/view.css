@@ -40,10 +40,9 @@
 
 .info-comercios{
   position: absolute;
-  right: 0px;
+  left: 76%;
   margin:auto 2%;
   top:45%;
-
   opacity: 0;
 }
 
