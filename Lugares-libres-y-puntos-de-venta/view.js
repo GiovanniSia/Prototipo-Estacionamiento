@@ -113,7 +113,7 @@ function botonesComercios(){
 		nombre = comerciosTodasLasZonas[x].nombreComercio + " " + comerciosTodasLasZonas[x].domicilio
 		const idBoton = comerciosTodasLasZonas[x].id
 
-		var button = '<input type="submit" value='+ comerciosTodasLasZonas[x].id+' id='+ comerciosTodasLasZonas[x].id +' name='+ nombre +'/>';
+		var button = '<input type="submit" class="menu-botonsito" value='+ comerciosTodasLasZonas[x].id+' id='+ comerciosTodasLasZonas[x].id +' name='+ nombre +'/>';
 		
 		$('#botonPuntosComerciosIndividuales').append(button);
 		

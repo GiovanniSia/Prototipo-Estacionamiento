@@ -89,7 +89,6 @@ body {
 
 }
 .formulario-infraccion input:focus{
-    width: 280px;
     border-color: #2ecc71;
     outline:none;/*al parecer es un subrayado feo que le da el navegador*/
 }
