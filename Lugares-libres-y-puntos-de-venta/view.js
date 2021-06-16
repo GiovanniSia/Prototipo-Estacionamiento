@@ -75,7 +75,7 @@ function dibujarPuntosEstacionamientos() {
 function dibujarGrupoDePuntosEstacionamientoEnElMapa(zona, estacionamientos){
 	for(let x = 0; x < estacionamientos.length; x++){ 
 			zona.addLayers([
-			L.marker([estacionamientos[x].lat,estacionamientos[x].long], {icon: iconoEstacionamiento}).bindPopup("id:" + estacionamientos.id)
+			L.marker([estacionamientos[x].lat,estacionamientos[x].long], {icon: iconoEstacionamiento}).bindPopup("id:" + estacionamientos[x].id)
  		 ])
 	}
 	zona.addTo(map);
