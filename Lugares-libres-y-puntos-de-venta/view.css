@@ -42,7 +42,7 @@
   position: absolute;
   left: 76%;
   margin:auto 2%;
-  top:80%;
+  top:82%;
   opacity: 0;
 }
 
@@ -51,9 +51,9 @@
 }
 
 .menu-botonsito{
+  padding: 5px;
   margin:5px;
-  background: #000;
-  color: #fff;
+  color: black;
   font-weight: bold;
   border: none;
   border-radius: 3px;
@@ -61,5 +61,7 @@
   transition: .1s ease all;
 }
 .menu-botonsito:hover{
+  background: black;
+  color:white;
   box-shadow: 3px 0px 30px rgba(163,163,163, 1);
 }

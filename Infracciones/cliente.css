@@ -89,5 +89,6 @@ body {
 
 }
 .formulario-infraccion input:focus{
+	border-color: #2ecc71;
     outline:none;
 }
