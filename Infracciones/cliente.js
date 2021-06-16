@@ -143,29 +143,3 @@ var bootstrap = function () {
         }
     }
 }
-
-function mostrarBotonAbrirMapa(datosAcarreoExtract) {
-    const form = document.getElementById("infracciones");
-    const button = '<div id="botones_acarreo"><input type="submit" value="ver la ubicacion" id="Abrir_mapa" name="ver la ubicacion"/></div>';
-    $('#infracciones').append(button);
-
-    $("#Abrir_mapa").click(function () {
-        mostrarEnElMapaDeposito(datosAcarreoExtract)
-        mostrarBotonCerrarMapa(mapid);
-    });
-}
-
-function mostrarBotonCerrarMapa(){
-    const buttonBorrar = '<input type="submit" value="Cerrar mapa" id="Cerrar_mapa" name="Cerrar mapa"/>';
-    $('#botones_acarreo').append(buttonBorrar);
-    $("#Cerrar_mapa").click(function () {
-        mapid.css('display', 'none')
-        borrarBotonCerrarMapa();
-    });
-}
-
-function borrarBotonCerrarMapa(){
-    const boton = document.querySelector("#Cerrar_mapa");
-    padre= boton.parentNode;
-    padre.removeChild(boton)
-}
