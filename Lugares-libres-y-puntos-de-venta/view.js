@@ -29,7 +29,7 @@ function bootstrap() {
     L.latLng(-34.53182105502062, -58.70031862564283),
     L.latLng(-34.525860154920245, -58.69369666852618),
 ])
-primerZona.options.color = '#FF5733';
+primerZona.options.color = '#62FA50';
 primerZona.addTo(map);
 	
 	L.polygon([
@@ -75,7 +75,7 @@ function dibujarPuntosEstacionamientos() {
 function dibujarGrupoDePuntosEstacionamientoEnElMapa(zona, estacionamientos){
 	for(let x = 0; x < estacionamientos.length; x++){ 
 			zona.addLayers([
-			L.marker([estacionamientos[x].lat,estacionamientos[x].long], {icon: iconoEstacionamiento}).bindPopup("id:" + estacionamientos[x].id)
+			L.marker([estacionamientos[x].lat,estacionamientos[x].long], {icon: iconoEstacionamiento}).bindPopup("Codigo:" + estacionamientos[x].id)
  		 ])
 	}
 	zona.addTo(map);
