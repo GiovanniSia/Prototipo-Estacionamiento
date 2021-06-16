@@ -11,8 +11,11 @@ function mostrarBotonAbrirMapa(datosAcarreoExtract) {
     $('#infracciones').append(button);
 
     $("#Abrir_mapa").click(function () {
-        mostrarEnElMapaDeposito(datosAcarreoExtract)
-        mostrarBotonCerrarMapa(mapid);
+        
+        mostrarEnElMapaDeposito(datosAcarreoExtract);
+        if(!Boolean(document.querySelector("#Cerrar_mapa"))){
+            mostrarBotonCerrarMapa(mapid);
+        }
     });
 }
 
@@ -20,7 +23,7 @@ function mostrarBotonCerrarMapa() {
     const buttonBorrar = '<input type="submit"  class="botones-mapa" value="Cerrar mapa" id="Cerrar_mapa" name="Cerrar mapa"/>';
     $('#botones_acarreo').append(buttonBorrar);
     $("#Cerrar_mapa").click(function () {
-        mapid.css('display', 'none')
+        mapid.css('display', 'none');
         borrarBotonCerrarMapa();
     });
 }
@@ -28,5 +31,5 @@ function mostrarBotonCerrarMapa() {
 function borrarBotonCerrarMapa() {
     const boton = document.querySelector("#Cerrar_mapa");
     padre = boton.parentNode;
-    padre.removeChild(boton)
+    padre.removeChild(boton);
 }
