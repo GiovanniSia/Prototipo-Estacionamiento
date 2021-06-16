@@ -16,4 +16,4 @@ function getUbicacionDeEspacioOcupado(espacio){
 }
 
 let espaciosOcupados = []
-espaciosOcupados.push(new espacioOcupadoEstacionamiento(-34.530597854122945, -58.70129638001595, 1, "16/06/2021 15:30", "$10", "AAA000"));
+espaciosOcupados.push(new espacioOcupadoEstacionamiento(-34.530597854122945, -58.70129638001595, "GAF215", "16/06/2021 15:30", "$10", "AAA000"));
