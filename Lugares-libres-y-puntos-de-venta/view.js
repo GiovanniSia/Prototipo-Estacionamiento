@@ -40,39 +40,7 @@ primerZona.addTo(map);
     L.latLng(-34.51235133404739, -58.6626180610012)
 ]).addTo(map);
 
-//  var ungsMarker=L.marker(ungsLocation);
-//  ungsMarker.addTo(map);
-
-/*
-  var estacionamientoPrimerZona = L.markerClusterGroup()
-	for(let x = 0; x < espaciosPrimerZona.length; x++){ 
-  		estacionamientoPrimerZona.addLayers([
-			L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long])
- 		 ])
-	}
-	estacionamientoPrimerZona.addTo(map);
-
-	var estacionamientoSegundaZona = L.markerClusterGroup()
-	for(let x = 0; x < espaciosSegundaZona.length; x++){ 
-  		estacionamientoSegundaZona.addLayers([
-			L.marker([espaciosSegundaZona[x].lat,espaciosSegundaZona[x].long])
-  		])
-	}
-	estacionamientoSegundaZona.addTo(map);
-*/
-
-/*
-var estacionamientoPrimerZona = L.markerClusterGroup()
-for(let x = 0; x < espaciosDisponiblesTodasZonas.length; x++){ 
-  estacionamientoPrimerZona.addLayers([
-	L.marker([espaciosDisponiblesTodasZonas[x].lat,espaciosDisponiblesTodasZonas[x].long])
-  ])
-}
-estacionamientoPrimerZona.addTo(map);
-*/
-
-  //map.addLayer(cluster);
-botonesComercios()
+	botonesComercios()
 }
 
 
@@ -93,22 +61,19 @@ document.getElementById("botonEstacionamientos").addEventListener('submit', (e) 
 });
 
 function dibujarPuntosEstacionamientos() {
-borrarPuntosDelMapa()
-	for(let x = 0; x < espaciosPrimerZona.length; x++){ 
-  		estacionamientoPrimerZona.addLayers([
-			L.marker([espaciosPrimerZona[x].lat,espaciosPrimerZona[x].long], {icon: iconoEstacionamiento}).bindPopup("id:" + espaciosPrimerZona[x].id)
- 		 ])
-	}
-	estacionamientoPrimerZona.addTo(map);
-
-	for(let x = 0; x < espaciosSegundaZona.length; x++){ 
-  		estacionamientoSegundaZona.addLayers([
-			L.marker([espaciosSegundaZona[x].lat,espaciosSegundaZona[x].long], {icon: iconoEstacionamiento}).bindPopup("id:" + espaciosSegundaZona[x].id)
-  		])
-	}
-	estacionamientoSegundaZona.addTo(map);
+	borrarPuntosDelMapa()
+	dibujarGrupoDePuntosEstacionamientoEnElMapa(estacionamientoPrimerZona, espaciosPrimerZona);
+	dibujarGrupoDePuntosEstacionamientoEnElMapa(estacionamientoSegundaZona, espaciosSegundaZona);
 }
 
+function dibujarGrupoDePuntosEstacionamientoEnElMapa(zona, estacionamientos){
+	for(let x = 0; x < estacionamientos.length; x++){ 
+			zona.addLayers([
+			L.marker([estacionamientos[x].lat,estacionamientos[x].long], {icon: iconoEstacionamiento}).bindPopup("id:" + estacionamientos.id)
+ 		 ])
+	}
+	zona.addTo(map);
+}
 
 document.getElementById("botonPuntosComercio").addEventListener('submit', (e) => {
   e.preventDefault();
@@ -117,25 +82,18 @@ document.getElementById("botonPuntosComercio").addEventListener('submit', (e) =>
 });
 
 function dibujarPuntosComercio() {
-borrarPuntosDelMapa()
-  for(let x = 0; x < comerciosPrimerZona.length; x++){ 
-    comercioPrimeraZonaDibujar.addLayers([
-    L.marker([comerciosPrimerZona[x].lat,comerciosPrimerZona[x].long], ).bindPopup(getDescripcion(comerciosPrimerZona[x]))
-    ])
-  }
-  comercioPrimeraZonaDibujar.addTo(map);
+	borrarPuntosDelMapa();
+	dibujarGrupoDePuntosDeComercioEnElMapa(comercioPrimeraZonaDibujar, comerciosPrimerZona);
+	dibujarGrupoDePuntosDeComercioEnElMapa(comercioSegundaZonaDibujar, comerciosSegundaZona);
+}
 
-  for(let x = 0; x < comerciosSegundaZona.length; x++){ 
-    comercioSegundaZonaDibujar.addLayers([
-    L.marker([comerciosSegundaZona[x].lat,comerciosSegundaZona[x].long]).bindPopup(getDescripcion(comerciosSegundaZona[x]))
+function dibujarGrupoDePuntosDeComercioEnElMapa(zona, puntosDeComercio){
+	for(let x = 0; x < puntosDeComercio.length; x++){ 
+    		zona.addLayers([
+    L.marker([puntosDeComercio[x].lat,puntosDeComercio[x].long], ).bindPopup(getDescripcion(puntosDeComercio[x]))
     ])
-  }
-  comercioSegundaZonaDibujar.addTo(map);
-
-//
-//var button = '<input type="submit" value="Numero parrafos" id="num_parrafos" name="Numero Parrafos"/>';
-//$('#botonPuntosComercio').append(button);
-//$('form').append(button);
+  	}
+  	zona.addTo(map);
 }
 
 function borrarPuntosDelMapa(){
@@ -165,14 +123,6 @@ function botonesComercios(){
 			escribirInfoComercio(comerciosTodasLasZonas[x]);
     		});
 
-/*
-		const elBoton=document.getElementById(idBoton);
-		elBoton.addEventListener('submit', (e) => {
- 			 e.preventDefault();
-  			console.log("se ejecuta el boton propio");
-  			botonesComerciosPropios(idBoton);
-		});
-*/
 	}
 }
 
