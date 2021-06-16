@@ -17,6 +17,7 @@
     <script src="config.js"></script>
     <script src="mapa.js"></script>
     <script src="cliente.js"></script>
+    
 
 </head>
 
@@ -26,7 +27,11 @@
         <input id="ingresar-patente">
         <button id="boton-buscar">Buscar</button>
         <a id="boton-menu" href="../index.html">Volver al menu</a>
-        <label id="mensaje-sin-infracciones"> No hay infracciones</label>
+        <div id="mensaje-sin-infracciones">
+            <label><b> No hay infracciones</b></label>
+            <i class="coso-error fas fa-times-circle"></i>
+        </div>
+        
     </div>
     
     <div id="infracciones">
@@ -35,6 +40,7 @@
     <div id="mapid"></div>
 
     <script src="botones.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
