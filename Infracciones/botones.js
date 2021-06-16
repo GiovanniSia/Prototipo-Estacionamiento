@@ -1,9 +1,10 @@
-const boton = document.querySelector("#boton-buscar");
-let numPatente;
-boton.addEventListener("click", function (evento) {
-    numPatente = document.querySelector("#ingresar-patente").value;
-    bootstrap();
-})
+function botonBuscar(){
+    const boton = document.querySelector("#boton-buscar");
+    boton.addEventListener("click", function (evento) {
+        bootstrap(document.querySelector("#ingresar-patente").value);
+    })
+}
+botonBuscar();
 
 function mostrarBotonAbrirMapa(datosAcarreoExtract) {
     const form = document.getElementById("infracciones");

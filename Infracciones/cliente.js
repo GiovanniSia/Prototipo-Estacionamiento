@@ -1,4 +1,4 @@
-var bootstrap = function () {
+var bootstrap = function (numPatente) {
     var url = Config.url;
     var urlInfracciones = '/infracciones/';
     var urlTiposInfraccion = 'tiposInfraccion/';
