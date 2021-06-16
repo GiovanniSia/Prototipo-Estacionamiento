@@ -14,7 +14,7 @@ function mostrarBotonAbrirMapa(datosAcarreoExtract) {
         
         mostrarEnElMapaDeposito(datosAcarreoExtract);
         if(!Boolean(document.querySelector("#Cerrar_mapa"))){
-            mostrarBotonCerrarMapa(mapid);
+            mostrarBotonCerrarMapa();
         }
     });
 }
