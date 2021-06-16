@@ -45,9 +45,6 @@ var bootstrap = function () {
     requestInfracciones(numPatente)
         .then(extractInfracciones)
         .then(mostrarInfracciones)
-        .done(function () {
-            console.log("Fin mostrar infracciones.");
-        });
 
     function obtenerTipoInfraccion(tipo_id) {
         return requestTiposInfraccionID(tipo_id)
@@ -56,7 +53,6 @@ var bootstrap = function () {
     }
 
     var mostrarTiposInfraccion = function (response) {
-
         return response.descripcion;
     }
 
@@ -97,14 +93,12 @@ var bootstrap = function () {
         document.getElementById("infracciones").innerHTML = "";
         const infraccionesActualizadas = await buscarEInsertarLosTiposDeInfracciones(infracciones)
         await escribirInfraccionesEnHtml(infraccionesActualizadas)
-        console.log("Cumplio la segunda de secuencializado")
     }
 
     async function siHayAcarreo(infraccion) {
         if (infraccion.existeAcarreo) {
             const datosAcarreo = await requestAcarreo(infraccion.patente, infraccion.id)
             const datosAcarreoExtract = await extractAcarreo(datosAcarreo)
-            console.log(datosAcarreoExtract)
 
             var text = document.createTextNode("Deposito del acarreo: " + datosAcarreoExtract.deposito.nombre + ", direccion:" + datosAcarreoExtract.deposito.direccion + ", horarios:" + datosAcarreoExtract.deposito.horarios + ", telefono: " + datosAcarreoExtract.deposito.telefono);
 

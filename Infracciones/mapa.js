@@ -16,7 +16,6 @@ var createMap = async function(nodeId, datosAcarreo) {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-	    console.log(depositoLocation[1] + " lerolero")
     	var layersControl = L.control.layers({
         "Base": baseLayer
          });
@@ -34,6 +33,5 @@ async function mostrarEnElMapaDeposito(datosAcarreo){
 	//var ubicacionDeposito = [datosAcarreo.deposito.ubicacion.lat, datosAcarreo.deposito.ubicacion.lon];
 	mapid = $("#mapid");
 	mapid.css('display','block')
-	console.log("DATOS ACARREO: ",datosAcarreo);
 	await createMap('mapid', datosAcarreo);
 }
