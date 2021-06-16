@@ -5,11 +5,10 @@ var createMap = async function(nodeId, datosAcarreo) {
     var depositoLocation = [datosAcarreo.deposito.ubicacion.lat, datosAcarreo.deposito.ubicacion.lon];
 
     // Creación del componente mapa de Leaflet.
+
+	borrarPuntos(p);
+	borrarMapa(map);
 	
-	if(map != null){
-		p.remove();
-		map.remove();
-	}
         map = await L.map(nodeId).setView(depositoLocation, 13);
 	// Agregamos los Layers de OpenStreetMap.
    	    var baseLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -34,4 +33,16 @@ async function mostrarEnElMapaDeposito(datosAcarreo){
 	mapid = $("#mapid");
 	mapid.css('display','block')
 	await createMap('mapid', datosAcarreo);
+}
+
+function borrarMapa(unMapa){
+	if(unMapa != null){
+		unMapa.remove();
+	}
+}
+
+function borrarPuntos(puntos){
+	if(puntos != null){
+		puntos.remove();
+	}
 }
