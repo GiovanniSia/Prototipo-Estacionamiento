@@ -2,6 +2,8 @@ function botonBuscar(){
     const boton = document.querySelector("#boton-buscar");
     boton.addEventListener("click", function (evento) {
         bootstrap(document.querySelector("#ingresar-patente").value);
+        mapid = $("#mapid");
+        mapid.css('display', 'none');
     })
 }
 botonBuscar();

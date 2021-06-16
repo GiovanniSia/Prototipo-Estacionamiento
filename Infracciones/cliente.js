@@ -106,8 +106,7 @@ var bootstrap = function (numPatente) {
             var newt = document.createElement("br");
             document.getElementById("infracciones").appendChild(newt);
 
-            mostrarBotonAbrirMapa(datosAcarreoExtract)
-            mapid = $("#mapid");        
+            mostrarBotonAbrirMapa(datosAcarreoExtract)        
           
             newt = document.createElement("br");
             document.getElementById("infracciones").appendChild(newt);
