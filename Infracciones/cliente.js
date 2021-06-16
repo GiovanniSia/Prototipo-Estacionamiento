@@ -2,29 +2,18 @@ var bootstrap = function () {
     var url = Config.url;
     var urlInfracciones = '/infracciones/';
     var urlTiposInfraccion = 'tiposInfraccion/';
-    var urlDepositos = 'depositos/';
     var urlAcarreo = '/acarreos/';
 
     //'/api/ABC123/infracciones/'
     var requestInfracciones = function (patente) {
         return $.ajax(url + patente + urlInfracciones)
     }
-    //'/api/ABC123/infracciones/42'
-    var requestInfraccionID = function (patente, infraccion_id) {
-        return $.ajax(url + patente + urlInfracciones + infraccion_id)
-    }
-    //'/api/tiposInfraccion/'
-    var requestTiposInfraccion = function () {
-        return $.ajax(url + urlTiposInfraccion)
-    }
+
     //'/api/tiposInfraccion/1'
     var requestTiposInfraccionID = function (tipo_id) {
         return $.ajax(url + urlTiposInfraccion + tipo_id)
     }
-    //'/api/depositos'
-    var requestDepositos = function () {
-        return $.ajax(url + urlDepositos)
-    }
+
     //'/api/ABC123/acarreos/42'
     var requestAcarreo = function (patente, infraccion_id) {
         return $.ajax(url + patente + urlAcarreo + infraccion_id)
@@ -38,22 +27,12 @@ var bootstrap = function () {
     var extractInfracciones = function (response) {
         return responseExtract("infracciones", response);
     }
-    //'/api/ABC123/infracciones/42'
-    var extractInfraccionID = function (response) {
-        return responseExtract("infraccion", response);
-    }
-    //'/api/tiposInfraccion/'
-    var extractTiposInfraccion = function (response) {
-        return responseExtract("tipos", response);
-    }
+
     //'/api/tiposInfraccion/1'
     var extractTiposInfraccionID = function (response) {
         return responseExtract("tipo", response);
     }
-    //'/api/depositos'
-    var extractDepositos = function (response) {
-        return responseExtract("depositos", response);
-    }
+
     //'/api/ABC123/acarreos/42'
     var extractAcarreo = function (response) {
         return responseExtract("acarreo", response);
@@ -123,8 +102,6 @@ var bootstrap = function () {
 
     async function siHayAcarreo(infraccion) {
         if (infraccion.existeAcarreo) {
-            //aca se hacen los cambios
-            //obtengo los datos del acarreo
             const datosAcarreo = await requestAcarreo(infraccion.patente, infraccion.id)
             const datosAcarreoExtract = await extractAcarreo(datosAcarreo)
             console.log(datosAcarreoExtract)

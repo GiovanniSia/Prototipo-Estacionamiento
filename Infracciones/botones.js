@@ -1,6 +1,6 @@
 const boton = document.querySelector("#boton-buscar");
 let numPatente;
-boton.addEventListener("click", function(evento){
+boton.addEventListener("click", function (evento) {
     numPatente = document.querySelector("#ingresar-patente").value;
     bootstrap();
 })
@@ -16,7 +16,7 @@ function mostrarBotonAbrirMapa(datosAcarreoExtract) {
     });
 }
 
-function mostrarBotonCerrarMapa(){
+function mostrarBotonCerrarMapa() {
     const buttonBorrar = '<input type="submit" value="Cerrar mapa" id="Cerrar_mapa" name="Cerrar mapa"/>';
     $('#botones_acarreo').append(buttonBorrar);
     $("#Cerrar_mapa").click(function () {
@@ -25,8 +25,8 @@ function mostrarBotonCerrarMapa(){
     });
 }
 
-function borrarBotonCerrarMapa(){
+function borrarBotonCerrarMapa() {
     const boton = document.querySelector("#Cerrar_mapa");
-    padre= boton.parentNode;
+    padre = boton.parentNode;
     padre.removeChild(boton)
 }
