@@ -10,13 +10,15 @@ body {
 	width: 55%;
 }
 
-
 #infracciones{
 	height: 300px;
   	width: 100%;
 	position: relative;
 }
 
+#mensaje-sin-infracciones{
+	display:none;
+}
 
 
 #formulario-infraccion{

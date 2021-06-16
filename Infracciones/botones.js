@@ -1,12 +1,34 @@
-function botonBuscar(){
+function botonBuscar() {
     const boton = document.querySelector("#boton-buscar");
     boton.addEventListener("click", function (evento) {
-        bootstrap(document.querySelector("#ingresar-patente").value);
-        mapid = $("#mapid");
-        mapid.css('display', 'none');
+        const numPatente= document.querySelector("#ingresar-patente").value;
+        if(esvacio(numPatente)){
+            bootstrap(numPatente)
+            mapid = $("#mapid");
+            mapid.css('display', 'none');
+        }else{
+            mostrarSinInfracciones();
+        }
     })
 }
 botonBuscar();
+
+function esvacio(valor){
+    if(Boolean(valor)){
+        return true;
+    }
+    return false;
+}
+
+function mostrarSinInfracciones(){
+    var mensajeSinInfracciones = document.getElementById('mensaje-sin-infracciones')
+    mensajeSinInfracciones.style = "display:block"
+}
+
+function ocultarSinInfracciones(){
+    var mensajeSinInfracciones = document.getElementById('mensaje-sin-infracciones')
+    mensajeSinInfracciones.style = "";  
+}
 
 function mostrarBotonAbrirMapa(datosAcarreoExtract) {
     const form = document.getElementById("infracciones");
@@ -14,9 +36,9 @@ function mostrarBotonAbrirMapa(datosAcarreoExtract) {
     $('#infracciones').append(button);
 
     $("#Abrir_mapa").click(function () {
-        
+
         mostrarEnElMapaDeposito(datosAcarreoExtract);
-        if(!Boolean(document.querySelector("#Cerrar_mapa"))){
+        if (!Boolean(document.querySelector("#Cerrar_mapa"))) {
             mostrarBotonCerrarMapa();
         }
     });

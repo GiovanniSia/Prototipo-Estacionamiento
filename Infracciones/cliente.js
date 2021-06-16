@@ -39,6 +39,11 @@ var bootstrap = function (numPatente) {
     }
 
     var mostrarInfracciones = function (response) {
+        if(response.length!=0){
+            ocultarSinInfracciones();
+        }else{
+            mostrarSinInfracciones();
+        }
         escribirLasInfraccionesEnElHtml(response)
     }
 
@@ -106,8 +111,8 @@ var bootstrap = function (numPatente) {
             var newt = document.createElement("br");
             document.getElementById("infracciones").appendChild(newt);
 
-            mostrarBotonAbrirMapa(datosAcarreoExtract)        
-          
+            mostrarBotonAbrirMapa(datosAcarreoExtract)
+
             newt = document.createElement("br");
             document.getElementById("infracciones").appendChild(newt);
         }
