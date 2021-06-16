@@ -95,7 +95,7 @@ var bootstrap = function (numPatente) {
     };
 
     async function escribirLasInfraccionesEnElHtml(infracciones) {
-        document.getElementById("infracciones").innerHTML = "";
+        borrarContenidoDeInfraccionesEnHtml();
         const infraccionesActualizadas = await buscarEInsertarLosTiposDeInfracciones(infracciones)
         await escribirInfraccionesEnHtml(infraccionesActualizadas)
     }
@@ -117,4 +117,10 @@ var bootstrap = function (numPatente) {
             document.getElementById("infracciones").appendChild(newt);
         }
     }
+
+	
+}
+
+function borrarContenidoDeInfraccionesEnHtml(){
+	document.getElementById("infracciones").innerHTML = "";
 }

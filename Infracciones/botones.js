@@ -2,18 +2,19 @@ function botonBuscar() {
     const boton = document.querySelector("#boton-buscar");
     boton.addEventListener("click", function (evento) {
         const numPatente= document.querySelector("#ingresar-patente").value;
-        if(esvacio(numPatente)){
+	mapid = $("#mapid");
+        mapid.css('display', 'none');
+        if(noEsVacio(numPatente)){
             bootstrap(numPatente)
-            mapid = $("#mapid");
-            mapid.css('display', 'none');
         }else{
-            mostrarSinInfracciones();
+		borrarContenidoDeInfraccionesEnHtml()
+            	mostrarSinInfracciones();
         }
     })
 }
 botonBuscar();
 
-function esvacio(valor){
+function noEsVacio(valor){
     if(Boolean(valor)){
         return true;
     }
