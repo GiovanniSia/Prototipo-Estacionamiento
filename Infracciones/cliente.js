@@ -70,6 +70,7 @@ var bootstrap = function (numPatente) {
             } else {
                 existeAcarreo = "No"
             }
+
             fechaHoraActualizacion = infracciones[x].fechaHoraActualizacion
             fechaHoraRegistro = infracciones[x].fechaHoraRegistro
             id = infracciones[x].id
@@ -117,8 +118,6 @@ var bootstrap = function (numPatente) {
             document.getElementById("infracciones").appendChild(newt);
         }
     }
-
-	
 }
 
 function borrarContenidoDeInfraccionesEnHtml(){

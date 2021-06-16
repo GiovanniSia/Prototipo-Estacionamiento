@@ -25,6 +25,7 @@ body {
 	border-radius: 3px;
 	display:none;
 }
+
 .coso-error{
 	position: absolute;
 	margin: 14px 3px;
@@ -39,8 +40,6 @@ body {
 	position: relative;
 	padding: 20px;
 }
-
-
  
 .formulario-infraccion button{
 	margin:10px;
@@ -71,6 +70,7 @@ body {
 	transition: .1s ease all;
 	padding: 13px;
 }
+
 .formulario-infraccion a:hover{
 	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
 }
@@ -86,10 +86,10 @@ body {
 	cursor: pointer;
 	transition: .1s ease all;
 }
+
 .botones-mapa:hover { 
 	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
 }
-
 
 .formulario-infraccion input{
     border:0;
@@ -100,8 +100,8 @@ body {
     width: 210px;
     border-radius: 24px;
     transition: 0.25s;
-
 }
+
 .formulario-infraccion input:focus{
 	border-color: #2ecc71;
     outline:none;

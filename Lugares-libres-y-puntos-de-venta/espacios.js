@@ -20,7 +20,6 @@ for(let x = 0; x < espaciosPrimerZona.length; x++){
 	espaciosDisponiblesTodasZonas.push(espaciosPrimerZona[x])
 }
 
-
 for(let x = 0; x < espaciosSegundaZona.length; x++){ 
 	espaciosDisponiblesTodasZonas.push(espaciosSegundaZona[x])
 }
