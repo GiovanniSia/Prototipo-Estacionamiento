@@ -52,6 +52,12 @@ let iconoEstacionamiento = L.icon({
 })
 
 
+let iconoEstacionamientoActivo = L.icon({
+	iconUrl:'../leaflet/images/otroPin.png',
+	iconSize:[25,40],
+	iconAnchor: [30,60]
+})
+
 
 
 document.getElementById("botonEstacionamientos").addEventListener('submit', (e) => {
@@ -155,7 +161,7 @@ function mostrarDondeDejoElCoche(){
 	var ubicacion = getUbicacionDeEspacioOcupado(espaciosOcupados[0]);
 	borrarPuntosDelMapa();
 	estacionamientoPrimerZona.addLayers([
-			L.marker(ubicacion, {icon: iconoEstacionamiento}).bindPopup(datosDelEstacionamiento)
+			L.marker(ubicacion, {icon: iconoEstacionamientoActivo}).bindPopup(datosDelEstacionamiento)
  		 ])
 	estacionamientoPrimerZona.addTo(map);
 	
