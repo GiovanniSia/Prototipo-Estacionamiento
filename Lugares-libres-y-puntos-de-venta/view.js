@@ -41,6 +41,7 @@ primerZona.addTo(map);
 ]).addTo(map);
 
 	botonesComercios()
+	mostrarDondeDejoElCoche()
 }
 
 
@@ -148,4 +149,15 @@ function escribirInfoComercio(infoBoton){
 	</label>
 	`;
 	document.getElementById('info-comercios').classList.add('info-comercios-mostrar');
+}
+
+function mostrarDondeDejoElCoche(){
+	var datosDelEstacionamiento = getDatosDeEspacioOcupado(espaciosOcupados[0]);
+	var ubicacion = getUbicacionDeEspacioOcupado(espaciosOcupados[0]);
+	borrarPuntosDelMapa();
+	estacionamientoPrimerZona.addLayers([
+			L.marker(ubicacion, {icon: iconoEstacionamiento}).bindPopup(datosDelEstacionamiento)
+ 		 ])
+	estacionamientoPrimerZona.addTo(map);
+	
 }

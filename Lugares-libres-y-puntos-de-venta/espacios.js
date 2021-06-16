@@ -18,10 +18,6 @@ espaciosSegundaZona.push(new espacioEst(-34.51655318684132, -58.67029077545164, 
 espaciosSegundaZona.push(new espacioEst(-34.50384872228707, -58.67613019921832, 6));
 espaciosSegundaZona.push(new espacioEst(-34.51246663466511, -58.66530911207543, 7));
 
-let espaciosOcupados = []
-espaciosOcupados.push(new espacioEst(-34.52957954866747, -58.70044157744358, 8));
-
-
 let espaciosDisponiblesTodasZonas = []
 for(let x = 0; x < espaciosPrimerZona.length; x++){ 
 	espaciosDisponiblesTodasZonas.push(espaciosPrimerZona[x])
